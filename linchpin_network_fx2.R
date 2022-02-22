@@ -108,8 +108,6 @@ Linchpin.Centrality <- function(links = edgelist, characteristics = key, label_c
                 if(c%% 10 == 0) {print(paste(c, '/', length(lookup_df[,1]), sep = ''))}
                 c=c+1
                 
-                
-                
                 if(weighted == FALSE) {
                         type = lookup_df$self_label[ids]
                         if(type=='NAN') {new_linkage = 0}
@@ -153,8 +151,7 @@ Linchpin.Centrality <- function(links = edgelist, characteristics = key, label_c
         }
         lookup_df$linkage = all_linkage
         lookup_df$ID_1 <- as.character(rownames(lookup_df))
-        # The code from github used the variable "key" here when I think it should be "characteristics"
-        # I changed it and it worked
+
         characteristics$ID_1 <- as.character(characteristics$ID_1)
         links.results[[3]] <- characteristics <- characteristics %>% left_join((lookup_df %>% select(ID_1, linkage)))
         
